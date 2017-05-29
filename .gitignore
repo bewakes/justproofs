@@ -1,0 +1,6 @@
+.env/
+db.sqlite3
+manage.py
+__pycache__/
+assets/dist/
+node_modules/
