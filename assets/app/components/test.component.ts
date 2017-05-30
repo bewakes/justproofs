@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="app">
+    bibek
       {{ message }}
     </div>
   `
