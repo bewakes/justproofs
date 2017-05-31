@@ -4,3 +4,6 @@ manage.py
 __pycache__/
 assets/dist/
 node_modules/
+typings
+.brotasks/
+assets/lib/

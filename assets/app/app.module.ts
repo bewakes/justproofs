@@ -1,6 +1,24 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './components/test.component.ts';
+import { AppComponent } from './components/app.component.ts';
 import { BrowserModule} from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+
+// app routes
+const appRoutes: Routes = [
+  { path: 'crisis-center', component: AppComponent},
+  { path: 'hero/:id',      component: AppComponent},
+  {
+    path: 'heroes',
+    component: AppComponent,
+    data: { title: 'Heroes List' }
+  },
+  { path: '',
+    redirectTo: '/heroes',
+    pathMatch: 'full'
+  },
+    //{ path: '**', component: PageNotFoundComponent }
+];
+
 
 @NgModule({
   declarations: [
@@ -8,10 +26,11 @@ import { BrowserModule} from '@angular/platform-browser';
     // register it inside the declarations array
   ],
   imports: [
-    BrowserModule
+      BrowserModule,
+      RouterModule.forRoot(appRoutes),
   ],
   bootstrap: [
-    AppComponent
+      AppComponent
   ]
 })
 export class AppModule {}
