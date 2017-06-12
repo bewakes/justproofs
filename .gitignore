@@ -7,3 +7,4 @@ node_modules/
 typings
 .brotasks/
 assets/lib/
+migrations/
