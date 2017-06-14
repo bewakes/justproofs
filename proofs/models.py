@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 
 from django.core import validators
+from django.utils import timezone
 
 from django_extensions.db.fields import AutoSlugField
 
@@ -89,6 +90,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
+    def get_short_name(self):
+        return self.name
 
 class ProofTopic(models.Model):
     """
@@ -119,7 +122,7 @@ class Proof(models.Model):
     """
     topic = models.ForeignKey(ProofTopic)
     content = models.TextField()
-    slug = AutoSlugField()
+    slug = AutoSlugField(populate_from='topic')
     tags =  models.ManyToManyField(Tag, related_name='proofs')
     popularity = models.FloatField(default=0)
 
