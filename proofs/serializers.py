@@ -2,27 +2,27 @@ from rest_framework import serializers
 
 from proofs.models import ProofTopic, Tag, Proof, Upvote, Downvote
 
-class TopicSerialier(serializers.ModelSerializer):
+class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProofTopic
-        fields = ('name', 'popularity')
+        fields = ('id', 'name', 'popularity', 'user')
 
 class ProofSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Proof
-        fields = ('topic', 'content', 'slug', 'popularity')
+        fields = ('id', 'topic', 'content', 'slug', 'popularity', 'user')
 
-class TagSerialiezer(serializers.ModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('name', 'popularity')
+        fields = ('name', 'popularity', 'slug')
 
 class UpvoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Upvote
-        fields = (user, proof)
+        fields = ('user', 'proof')
 
-class DownSerializer(serializers.ModelSerializer):
+class DownvoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Downvote
-        fields = (user, proof)
+        fields = ('user', 'proof')

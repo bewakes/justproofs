@@ -100,6 +100,7 @@ class ProofTopic(models.Model):
     """
     name = models.CharField(max_length=300)
     popularity = models.FloatField(default=0)
+    user = models.ForeignKey(User)
 
     def __str__(self):
         return self.name
@@ -110,6 +111,7 @@ class Tag(models.Model):
     Tag for proofs
     """
     name = models.CharField(max_length=40)
+    slug = AutoSlugField(populate_from=name)
     popularity = models.FloatField(default=0)
 
     def __str__(self):
@@ -125,6 +127,7 @@ class Proof(models.Model):
     slug = AutoSlugField(populate_from='topic')
     tags =  models.ManyToManyField(Tag, related_name='proofs')
     popularity = models.FloatField(default=0)
+    user = models.ForeignKey(User)
 
     def __str__(self):
         return self.topic.name
