@@ -10,6 +10,6 @@ router.register(r'proofs', ProofViewset)
 router.register(r'tags', TagViewset)
 
 urlpatterns = [
-    url(r'^/', home),
+    url(r'^$', home),
     url(r'^api/', include(router.urls)),
 ]
